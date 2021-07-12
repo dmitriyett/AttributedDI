@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AttributedDI
 {
-    // namespace Microsoft.Extensions.DependencyInjection
     public static class RegistrationServiceCollectionExtensions
     {
         public static IServiceCollection AddServicesFromExecutingAssembly(this IServiceCollection services)

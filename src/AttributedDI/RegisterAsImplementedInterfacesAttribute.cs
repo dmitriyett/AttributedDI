@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AttributedDI
 {
-    public class RegisterAsImplementedInterfaces : RegisterBase
+    public class RegisterAsImplementedInterfacesAttribute : RegisterBase
     {
-        public RegisterAsImplementedInterfaces(Lifetime lifetime) : base(lifetime)
+        public RegisterAsImplementedInterfacesAttribute(Lifetime lifetime) : base(lifetime)
         {
         }
 
