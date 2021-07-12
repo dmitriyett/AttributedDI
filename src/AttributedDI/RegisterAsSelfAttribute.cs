@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AttributedDI
 {
-    public class RegisterAttribute : RegisterBase
+    public class RegisterAsSelfAttribute : RegisterBase
     {
-        public RegisterAttribute(Lifetime lifetime) : base(lifetime)
+        public RegisterAsSelfAttribute(Lifetime lifetime) : base(lifetime)
         {
         }
 
