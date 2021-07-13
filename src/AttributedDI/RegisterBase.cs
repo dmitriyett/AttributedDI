@@ -8,6 +8,11 @@ namespace AttributedDI
     {
         protected RegisterBase(ServiceLifetime lifetime)
         {
+            if (!Enum.IsDefined(typeof(ServiceLifetime), lifetime))
+            {
+                throw new ArgumentException("Specified lifetime is not supported.", nameof(lifetime));
+            }
+
             Lifetime = lifetime;
         }
 
