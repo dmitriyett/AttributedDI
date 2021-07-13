@@ -1,0 +1,10 @@
+TODO:
+
+- unit tests
+- assembly scanner
+- nullable context
+- samples
+- code documentation
+- adjust Microsoft.Extensions.DependencyInjection version
+- adjust .net standard requirement
+- wiki
