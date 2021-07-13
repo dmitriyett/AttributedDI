@@ -5,13 +5,13 @@ namespace AttributedDI
 {
     public class RegisterAsSelfAttribute : RegisterBase
     {
-        public RegisterAsSelfAttribute(Lifetime lifetime) : base(lifetime)
+        public RegisterAsSelfAttribute(ServiceLifetime lifetime = ServiceLifetime.Transient) : base(lifetime)
         {
         }
 
         public override void PerformRegistration(IServiceCollection services, Type target)
         {
-            var descriptor = CreateDescriptor(target, target);
+            var descriptor = ServiceDescriptor.Describe(target, target, Lifetime);
 
             services.Add(descriptor);
         }

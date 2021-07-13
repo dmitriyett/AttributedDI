@@ -2,9 +2,13 @@ TODO:
 
 - unit tests
 - assembly scanner
+- make other Register attributes extendable
+
+
 - nullable context
-- samples
-- code documentation
 - adjust Microsoft.Extensions.DependencyInjection version
 - adjust .net standard requirement
+
+- samples
+- code documentation
 - wiki

@@ -7,14 +7,14 @@ namespace AttributedDI
     {
         private readonly Type serviceType;
 
-        public RegisterAsAttribute(Lifetime lifetime, Type serviceType) : base(lifetime)
+        public RegisterAsAttribute(Type serviceType, ServiceLifetime lifetime = ServiceLifetime.Transient) : base(lifetime)
         {
             this.serviceType = serviceType;
         }
 
         public override void PerformRegistration(IServiceCollection services, Type target)
         {
-            var descriptor = CreateDescriptor(serviceType, target);
+            var descriptor = ServiceDescriptor.Describe(serviceType, target, Lifetime);
 
             services.Add(descriptor);
         }

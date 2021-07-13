@@ -5,7 +5,7 @@ namespace AttributedDI
 {
     public class RegisterAsImplementedInterfacesAttribute : RegisterBase
     {
-        public RegisterAsImplementedInterfacesAttribute(Lifetime lifetime) : base(lifetime)
+        public RegisterAsImplementedInterfacesAttribute(ServiceLifetime lifetime = ServiceLifetime.Transient) : base(lifetime)
         {
         }
 
@@ -20,7 +20,7 @@ namespace AttributedDI
 
             foreach (var @interface in interfaces)
             {
-                var descriptor = CreateDescriptor(@interface, target);
+                var descriptor = ServiceDescriptor.Describe(@interface, target, Lifetime);
 
                 services.Add(descriptor);
             }
