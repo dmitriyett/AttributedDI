@@ -10,7 +10,7 @@ namespace AttributedDI
         {
             if (!Enum.IsDefined(typeof(ServiceLifetime), lifetime))
             {
-                throw new ArgumentException("Specified lifetime is not supported.", nameof(lifetime));
+                throw new ArgumentOutOfRangeException(nameof(lifetime), lifetime, "Specified lifetime is not supported.");
             }
 
             Lifetime = lifetime;
