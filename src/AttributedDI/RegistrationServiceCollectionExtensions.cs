@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AttributedDI
 {
-    // TODO: make it testable.
     public static class RegistrationServiceCollectionExtensions
     {
         public static IServiceCollection AddServicesFromAssemblyContainingType<T>(this IServiceCollection services)
