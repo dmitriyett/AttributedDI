@@ -12,3 +12,8 @@ TODO:
 - samples
 - code documentation
 - wiki
+- ci/cd
+
+things to conside:
+
+I don't actually like the fact that frozen dependencies are autowired when using AutoData. Maybe it is better to use builder api to build SUT instance instead.
