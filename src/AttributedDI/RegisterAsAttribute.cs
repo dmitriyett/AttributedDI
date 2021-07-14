@@ -4,17 +4,20 @@ using Microsoft.Extensions.DependencyInjection;
 namespace AttributedDI
 {
     public class RegisterAsAttribute : RegisterBase
-    {
-        private readonly Type serviceType;
-
-        public RegisterAsAttribute(Type serviceType, ServiceLifetime lifetime = ServiceLifetime.Transient) : base(lifetime)
+    {        
+        public RegisterAsAttribute(Type serviceType, ServiceLifetime lifetime = ServiceLifetime.Transient)
         {
-            this.serviceType = serviceType;
+            this.Lifetime = lifetime;
+            this.ServiceType = serviceType;
         }
+
+        public Type ServiceType { get; }
+        
+        public ServiceLifetime Lifetime { get; }
 
         public override void PerformRegistration(IServiceCollection services, Type target)
         {
-            var descriptor = ServiceDescriptor.Describe(serviceType, target, Lifetime);
+            var descriptor = ServiceDescriptor.Describe(ServiceType, target, Lifetime);
 
             services.Add(descriptor);
         }

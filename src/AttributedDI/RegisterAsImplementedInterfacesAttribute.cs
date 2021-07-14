@@ -5,9 +5,12 @@ namespace AttributedDI
 {
     public class RegisterAsImplementedInterfacesAttribute : RegisterBase
     {
-        public RegisterAsImplementedInterfacesAttribute(ServiceLifetime lifetime = ServiceLifetime.Transient) : base(lifetime)
+        public RegisterAsImplementedInterfacesAttribute(ServiceLifetime lifetime = ServiceLifetime.Transient)
         {
+            this.Lifetime = lifetime;
         }
+
+        public ServiceLifetime Lifetime { get; }
 
         public override void PerformRegistration(IServiceCollection services, Type target)
         {
