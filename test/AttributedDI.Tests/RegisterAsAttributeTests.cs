@@ -1,6 +1,10 @@
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using AttributedDI.Tests.Stubs;
+using AutoFixture;
+using AutoFixture.AutoNSubstitute;
 using AutoFixture.Xunit2;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,10 +49,10 @@ namespace AttributedDI.Tests
             var descriptor = services.FirstOrDefault();
 
             descriptor?.ServiceType.Should().Be(typeToRegister, "Correct service should be registered");
-        }
+        }        
 
         [Theory]
-        [AutoData]
+        [AutoDataWithCustomTypeGenerator]
         public void Added_Service_Has_Correct_Implementation_Type(ServiceCollectionStub services, Type typeToRegister, Type implementationType, RegisterAsAttribute sut)
         {
             // act
