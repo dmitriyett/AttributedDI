@@ -1,18 +1,15 @@
 using System;
+using System.Linq;
 using AttributedDI.Tests.Stubs;
 using AutoFixture.Xunit2;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace AttributedDI.Tests
 {
     public class RegisterAsImplmenentedInterfacesTests
     {
-        // throws when class doesn't implement any interfaces
-        // registers for all implemented interfaces
-        // lifetime is correct
-        // ServiceType is correct
-        // ImplementationType is correct        
         [Theory]
         [InlineAutoData]
         public void Throws_When_Service_Doesnt_Implement_Any_Interfaces(Type serviceWithNoInterfaces, ServiceCollectionStub services, RegisterAsImplementedInterfacesAttribute sut)
@@ -33,6 +30,41 @@ namespace AttributedDI.Tests
 
             // assert
             services.Should().HaveCount(serviceWithInterfaces.GetInterfaces().Length, "There should be as many registrations as there interfaces");
+        }
+
+        [Theory]
+        [InlineAutoData(typeof(StubWithSingleImplementedInterface))]
+        public void Added_Service_Has_Correct_Lifetime(Type service, ServiceCollectionStub services, [Frozen] ServiceLifetime expectedLifetime, RegisterAsImplementedInterfacesAttribute sut)
+        {
+            // act
+            sut.PerformRegistration(services, service);
+
+            // assert
+            var descriptor = services.FirstOrDefault();
+
+            descriptor?.Lifetime.Should().Be(expectedLifetime, "Service should be registered with specified lifetime");
+        }
+
+        [Theory]
+        [InlineAutoData(typeof(StubWithTwoImplmenetedInterfaces))]
+        public void Added_Services_Have_Correct_Service_Type(Type service, ServiceCollectionStub services, RegisterAsImplementedInterfacesAttribute sut)
+        {
+            // act
+            sut.PerformRegistration(services, service);
+
+            // assert
+            services.Should().Equal(service.GetInterfaces(), (serviceDescriptor, @interface) => serviceDescriptor.ServiceType == @interface);
+        }
+
+        [Theory]
+        [InlineAutoData(typeof(StubWithTwoImplmenetedInterfaces))]
+        public void Added_Services_Have_Correct_Implementation_Type(Type service, ServiceCollectionStub services, RegisterAsImplementedInterfacesAttribute sut)
+        {
+            // act
+            sut.PerformRegistration(services, service);
+
+            // assert
+            services.Should().OnlyContain(sd => sd.ImplementationType == service);
         }
     }
 }
