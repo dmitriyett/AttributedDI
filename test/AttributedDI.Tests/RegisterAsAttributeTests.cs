@@ -39,29 +39,39 @@ namespace AttributedDI.Tests
         }
 
         [Theory]
-        [AutoData]
-        public void Added_Service_Has_Correct_Service_Type(ServiceCollectionStub services, Type typeToRegister, [Frozen] Type implementationType, RegisterAsAttribute sut)
+        [InlineAutoData(typeof(ServiceStub), typeof(ImplementationStub))]
+        public void Added_Service_Has_Correct_Service_Type(Type registerAsType, Type registerType, ServiceCollectionStub services, Fixture fixture)
         {
+            // arrange
+            // workaround for autofixture supplying typeof(object) for all type instances.
+            fixture.Inject(registerAsType);
+            var sut = fixture.Create<RegisterAsAttribute>();
+
             // act
-            sut.PerformRegistration(services, typeToRegister);
+            sut.PerformRegistration(services, registerType);
 
             // assert
             var descriptor = services.FirstOrDefault();
 
-            descriptor?.ServiceType.Should().Be(typeToRegister, "Correct service should be registered");
-        }        
+            descriptor?.ServiceType.Should().Be(registerAsType, "Correct service should be registered");
+        }
 
         [Theory]
-        [AutoDataWithCustomTypeGenerator]
-        public void Added_Service_Has_Correct_Implementation_Type(ServiceCollectionStub services, Type typeToRegister, Type implementationType, RegisterAsAttribute sut)
+        [InlineAutoData(typeof(ServiceStub), typeof(ImplementationStub))]
+        public void Added_Service_Has_Correct_Implementation_Type(Type registerAsType, Type registerType, ServiceCollectionStub services, Fixture fixture)
         {
+            // arrange
+            // workaround for autofixture supplying typeof(object) for all type instances.
+            fixture.Inject(registerAsType);
+            var sut = fixture.Create<RegisterAsAttribute>();
+
             // act
-            sut.PerformRegistration(services, typeToRegister);
+            sut.PerformRegistration(services, registerType);
 
             // assert
             var descriptor = services.FirstOrDefault();
 
-            descriptor?.ImplementationType.Should().Be(typeToRegister, "Service should be registered as self in container");
+            descriptor?.ImplementationType.Should().Be(registerType, "Service should be registered as self in container");
         }
     }
 }

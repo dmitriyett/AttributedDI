@@ -1,7 +1,6 @@
 namespace AttributedDI.Tests.Stubs
 {
-    public class ObjectToRegister
+    public class ServiceStub
     {
-        
     }
 }
