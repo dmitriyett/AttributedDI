@@ -1,6 +1,0 @@
-TODO:
-- code documentation
-- wiki
-- publish
-- ci/cd
-- samples
