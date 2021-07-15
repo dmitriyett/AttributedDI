@@ -8,8 +8,8 @@ namespace AttributedDI
     /// <summary>
     /// Assembly scan result.
     /// </summary>
-    /// <param name="Service">Service to register</param>
-    /// <param name="RegisterAttribute">Attached registration attribute</param>
+    /// <param name="Service">Service to register.</param>
+    /// <param name="RegisterAttribute">Attached registration attribute.</param>
     public record AssemblyScanResult(Type Service, RegisterBase RegisterAttribute);
 
     /// <summary>
@@ -22,8 +22,9 @@ namespace AttributedDI
         /// <summary>
         /// Scan an assembly for types to be registered.
         /// </summary>
-        /// <param name="assembly">Assembly to be scanned</param>
+        /// <param name="assembly">Assembly to be scanned.</param>
         /// <returns>List of types to be registered.</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Shouldn't be static for unit testing purposes.")]
         public AssemblyScanResult[] Scan(Assembly assembly)
         {
             var results = assembly.GetTypes()
