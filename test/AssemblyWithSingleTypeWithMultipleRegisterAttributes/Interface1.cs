@@ -1,8 +1,6 @@
-﻿using System;
-
 namespace AssemblyWithSingleTypeWithMultipleRegisterAttributes
 {
-    public class Class1
+    public interface Interface1
     {
     }
 }
