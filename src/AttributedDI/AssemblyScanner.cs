@@ -1,35 +1,36 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
 namespace AttributedDI
 {
-    public record AssemblyScanResult(Type Service, RegisterBase registerAttribute);
-
-    public class AppDomainScanner
-    {
-        public AppDomainScanner()
-        {
-
-        }
-    }
+    public record AssemblyScanResult(Type Service, RegisterBase RegisterAttribute);
 
     public class AssemblyScanner
     {
+        private static readonly Type RegisterBaseType = typeof(RegisterBase);
+
         public AssemblyScanResult[] Scan(Assembly assembly)
         {
-            var types = assembly.GetTypes()
+            var results = assembly.GetTypes()
                 .Where(ContainsRegisterAttribute)
-                .Select(t => t.GetCustomAttributes<RegisterBase>());
+                .SelectMany(ToScanResult)
+                .ToArray();
 
-            throw new NotImplementedException();
+            return results;
         }
 
         private static bool ContainsRegisterAttribute(Type type)
         {
-            var registerBaseType = typeof(RegisterBase);
+            return type.CustomAttributes.Any(a => RegisterBaseType.IsAssignableFrom(a.AttributeType));
+        }
 
-            return type.CustomAttributes.Any(a => typeof(RegisterBase).IsAssignableFrom(a.AttributeType));
+        private static IEnumerable<AssemblyScanResult> ToScanResult(Type type)
+        {
+            var attributes = type.GetCustomAttributes<RegisterBase>();
+
+            return attributes.Select(a => new AssemblyScanResult (type, a));
         }
     }
 }
