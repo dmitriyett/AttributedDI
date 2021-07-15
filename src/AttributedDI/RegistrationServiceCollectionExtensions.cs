@@ -7,6 +7,8 @@ namespace AttributedDI
 {
     public static class RegistrationServiceCollectionExtensions
     {
+        private static readonly AssemblyScanner AssemblyScanner = new AssemblyScanner();
+
         public static IServiceCollection AddServicesFromAssemblyContainingType<T>(this IServiceCollection services)
         {
             return AddServicesFromAssembly(services, typeof(T).Assembly);
@@ -19,31 +21,14 @@ namespace AttributedDI
 
         public static IServiceCollection AddServicesFromAssembly(this IServiceCollection services, Assembly assembly)
         {
-            var typesToRegister = assembly.GetTypes().Where(ContainsRegisterAttribute).ToArray();
+            var scanResults = AssemblyScanner.Scan(assembly);
 
-            foreach (var type in typesToRegister)
+            foreach (var scanResult in scanResults)
             {
-                PerformRegistration(services, type);
+                scanResult.RegisterAttribute.PerformRegistration(services, scanResult.Service);
             }
 
             return services;
-        }
-
-        private static bool ContainsRegisterAttribute(Type type)
-        {
-            var registerBaseType = typeof(RegisterBase);
-
-            return type.CustomAttributes.Any(a => typeof(RegisterBase).IsAssignableFrom(a.AttributeType));
-        }
-
-        private static void PerformRegistration(IServiceCollection services, Type type)
-        {
-            var attributes = type.GetCustomAttributes<RegisterBase>();
-
-            foreach (var attribute in attributes)
-            {
-                attribute.PerformRegistration(services, type);
-            }
         }
     }
 }
