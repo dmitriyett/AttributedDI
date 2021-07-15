@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace AttributedDI
@@ -15,14 +16,20 @@ namespace AttributedDI
 
     public class AssemblyScanner
     {
-        public AssemblyScanner(Assembly assembly)
+        public AssemblyScanResult[] Scan(Assembly assembly)
         {
+            var types = assembly.GetTypes()
+                .Where(ContainsRegisterAttribute)
+                .Select(t => t.GetCustomAttributes<RegisterBase>());
 
+            throw new NotImplementedException();
         }
 
-        public AssemblyScanResult[] Scan()
+        private static bool ContainsRegisterAttribute(Type type)
         {
-            throw new NotImplementedException();
+            var registerBaseType = typeof(RegisterBase);
+
+            return type.CustomAttributes.Any(a => typeof(RegisterBase).IsAssignableFrom(a.AttributeType));
         }
     }
 }
