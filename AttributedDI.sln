@@ -5,25 +5,24 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{38050C7C-BCE7-4DC4-B0C9-BA506FBE065C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributedDI", "src\AttributedDI\AttributedDI.csproj", "{0A854C5D-8126-460C-9AA4-8E00462BBAB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttributedDI", "src\AttributedDI\AttributedDI.csproj", "{0A854C5D-8126-460C-9AA4-8E00462BBAB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4B06D2B2-E90E-4A4F-AE63-5B11DDF5DD0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributedDI.Tests", "test\AttributedDI.Tests\AttributedDI.Tests.csproj", "{E0861708-77E2-4813-BBC4-D4A5E52899E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttributedDI.Tests", "test\AttributedDI.Tests\AttributedDI.Tests.csproj", "{E0861708-77E2-4813-BBC4-D4A5E52899E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithMultipleTypesToRegister", "test\AssemblyWithMultipleTypesToRegister\AssemblyWithMultipleTypesToRegister.csproj", "{162F674D-4D68-4134-ACDF-7A6673DF4325}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithMultipleTypesToRegister", "test\AssemblyWithMultipleTypesToRegister\AssemblyWithMultipleTypesToRegister.csproj", "{162F674D-4D68-4134-ACDF-7A6673DF4325}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithNoTypesToRegister", "test\AssemblyWithNoTypesToRegister\AssemblyWithNoTypesToRegister.csproj", "{9DABCF61-C71A-4E5C-8EED-CDFF01CB4BBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithNoTypesToRegister", "test\AssemblyWithNoTypesToRegister\AssemblyWithNoTypesToRegister.csproj", "{9DABCF61-C71A-4E5C-8EED-CDFF01CB4BBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithSingleTypeWithMultipleRegisterAttributes", "test\AssemblyWithSingleTypeWithMultipleRegisterAttributes\AssemblyWithSingleTypeWithMultipleRegisterAttributes.csproj", "{F4F4766F-5C9F-4650-862E-0189BAA1CA9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithSingleTypeWithMultipleRegisterAttributes", "test\AssemblyWithSingleTypeWithMultipleRegisterAttributes\AssemblyWithSingleTypeWithMultipleRegisterAttributes.csproj", "{F4F4766F-5C9F-4650-862E-0189BAA1CA9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC98A9EE-8990-4D73-83D2-7B21D8B901EB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A4776E81-3D20-418C-991C-6AB0F58A14B4}
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -94,11 +93,17 @@ Global
 		{F4F4766F-5C9F-4650-862E-0189BAA1CA9E}.Release|x86.ActiveCfg = Release|Any CPU
 		{F4F4766F-5C9F-4650-862E-0189BAA1CA9E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0A854C5D-8126-460C-9AA4-8E00462BBAB7} = {38050C7C-BCE7-4DC4-B0C9-BA506FBE065C}
 		{E0861708-77E2-4813-BBC4-D4A5E52899E5} = {4B06D2B2-E90E-4A4F-AE63-5B11DDF5DD0F}
 		{162F674D-4D68-4134-ACDF-7A6673DF4325} = {4B06D2B2-E90E-4A4F-AE63-5B11DDF5DD0F}
 		{9DABCF61-C71A-4E5C-8EED-CDFF01CB4BBE} = {4B06D2B2-E90E-4A4F-AE63-5B11DDF5DD0F}
 		{F4F4766F-5C9F-4650-862E-0189BAA1CA9E} = {4B06D2B2-E90E-4A4F-AE63-5B11DDF5DD0F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4776E81-3D20-418C-991C-6AB0F58A14B4}
 	EndGlobalSection
 EndGlobal
