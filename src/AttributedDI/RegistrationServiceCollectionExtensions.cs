@@ -7,7 +7,7 @@ namespace AttributedDI
 {
     public static class RegistrationServiceCollectionExtensions
     {
-        private static readonly AssemblyScanner AssemblyScanner = new AssemblyScanner();
+        private static readonly AssemblyScanner AssemblyScanner = new();
 
         public static IServiceCollection AddServicesFromAssemblyContainingType<T>(this IServiceCollection services)
         {
