@@ -53,7 +53,9 @@ namespace AttributedDI.Tests
             sut.PerformRegistration(services, service);
 
             // assert
-            services.Should().Equal(service.GetInterfaces(), (serviceDescriptor, @interface) => serviceDescriptor.ServiceType == @interface);
+            services.Should().Equal(service.GetInterfaces(), 
+                (serviceDescriptor, @interface) => serviceDescriptor.ServiceType == @interface, 
+                "Service type should be the implemented interface");
         }
 
         [Theory]
@@ -64,7 +66,7 @@ namespace AttributedDI.Tests
             sut.PerformRegistration(services, service);
 
             // assert
-            services.Should().OnlyContain(sd => sd.ImplementationType == service);
+            services.Should().OnlyContain(sd => sd.ImplementationType == service, "Implementation type should be the type being registered");
         }
     }
 }

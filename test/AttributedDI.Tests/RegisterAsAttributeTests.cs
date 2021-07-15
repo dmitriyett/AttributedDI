@@ -53,7 +53,7 @@ namespace AttributedDI.Tests
             // assert
             var descriptor = services.FirstOrDefault();
 
-            descriptor?.ServiceType.Should().Be(registerAsType, "Correct service should be registered");
+            descriptor?.ServiceType.Should().Be(registerAsType, "Service type should be the type specified in constructor");
         }
 
         [Theory]
@@ -71,7 +71,7 @@ namespace AttributedDI.Tests
             // assert
             var descriptor = services.FirstOrDefault();
 
-            descriptor?.ImplementationType.Should().Be(registerType, "Service should be registered as self in container");
+            descriptor?.ImplementationType.Should().Be(registerType, "Implementation type should be the type being registered");
         }
     }
 }
