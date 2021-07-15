@@ -11,7 +11,7 @@ namespace AttributedDI.Tests
     public class RegisterAsImplmenentedInterfacesTests
     {
         [Theory]
-        [InlineAutoData]
+        [InlineAutoData(typeof(StubWithNoImplementedInterfaces))]
         public void Throws_When_Service_Doesnt_Implement_Any_Interfaces(Type serviceWithNoInterfaces, ServiceCollectionStub services, RegisterAsImplementedInterfacesAttribute sut)
         {
             // act
