@@ -43,7 +43,7 @@ namespace AttributedDI
         {
             var attributes = type.GetCustomAttributes<RegisterBase>();
 
-            return attributes.Select(a => new AssemblyScanResult (type, a));
+            return attributes.Select(a => new AssemblyScanResult(type, a));
         }
     }
 }

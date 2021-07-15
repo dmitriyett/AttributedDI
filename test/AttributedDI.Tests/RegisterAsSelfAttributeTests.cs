@@ -1,9 +1,9 @@
-using System;
-using System.Linq;
 using AttributedDI.Tests.Stubs;
 using AutoFixture.Xunit2;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace AttributedDI.Tests

@@ -1,9 +1,9 @@
-using System;
-using System.Linq;
 using AttributedDI.Tests.Stubs;
 using AutoFixture.Xunit2;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace AttributedDI.Tests
@@ -53,8 +53,8 @@ namespace AttributedDI.Tests
             sut.PerformRegistration(services, service);
 
             // assert
-            services.Should().Equal(service.GetInterfaces(), 
-                (serviceDescriptor, @interface) => serviceDescriptor.ServiceType == @interface, 
+            services.Should().Equal(service.GetInterfaces(),
+                (serviceDescriptor, @interface) => serviceDescriptor.ServiceType == @interface,
                 "Service type should be the implemented interface");
         }
 

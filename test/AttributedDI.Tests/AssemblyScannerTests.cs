@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using AssemblyWithMultipleTypesToRegister;
 using AssemblyWithNoTypesToRegister;
 using AssemblyWithSingleTypeWithMultipleRegisterAttributes;

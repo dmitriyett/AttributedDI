@@ -1,13 +1,10 @@
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
 using AttributedDI.Tests.Stubs;
 using AutoFixture;
-using AutoFixture.AutoNSubstitute;
 using AutoFixture.Xunit2;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace AttributedDI.Tests

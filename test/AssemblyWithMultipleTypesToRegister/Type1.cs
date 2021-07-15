@@ -4,6 +4,6 @@ namespace AssemblyWithMultipleTypesToRegister
 {
     [RegisterAsSelf]
     public class Type1
-    {        
+    {
     }
 }

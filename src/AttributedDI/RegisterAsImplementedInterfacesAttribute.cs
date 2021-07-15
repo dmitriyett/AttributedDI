@@ -1,5 +1,5 @@
-using System;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace AttributedDI
 {
@@ -7,7 +7,7 @@ namespace AttributedDI
     {
         public RegisterAsImplementedInterfacesAttribute(ServiceLifetime lifetime = ServiceLifetime.Transient)
         {
-            this.Lifetime = lifetime;
+            Lifetime = lifetime;
         }
 
         public ServiceLifetime Lifetime { get; }
