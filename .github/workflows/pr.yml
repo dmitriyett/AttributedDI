@@ -1,10 +1,9 @@
-name: .NET
+name: Pull Request Validation
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:    
 
 jobs:
   build:
@@ -22,4 +21,10 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal --logger trx --results-directory TestResults
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: tests
+        path: TestResults
+      if: ${{ always() }}
