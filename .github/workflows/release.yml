@@ -1,4 +1,4 @@
-name: Push To Nuget
+name: Create Release
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "v*.*.*"
 
 jobs:
-  build:
+  buildAndPublish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -40,5 +40,5 @@ jobs:
         draft: true
         prerelease: true
         files: |
-          nuplgs
+          nupkgs
     # - name: Publish nupkg
