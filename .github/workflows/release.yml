@@ -1,15 +1,15 @@
-name: Pull Request Validation
+name: Push To Nuget
 
 on:
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:    
+  release:
+    types:
+      - created
+  # temporary for testing
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -22,9 +22,17 @@ jobs:
       run: dotnet build --no-restore -c Release
     - name: Test
       run: dotnet test --no-build --no-restore -c Release --verbosity normal --logger trx --results-directory TestResults
+    - name: Build nupkg
+      run: dotnet pack --no-build --no-restore -c Release --output nupkgs
     - name: Upload Test Results
       uses: actions/upload-artifact@v2.2.4
       with:
         name: tests
         path: TestResults
       if: ${{ always() }}
+    - name: Upload nugets
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: nupkgs
+        path: nupkgs
+    # - name: Publish nupkg
