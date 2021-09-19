@@ -2,6 +2,7 @@ name: Build and publish to nuget
 
 on:
   release:
+    types: [created]
 
 jobs:
   buildAndPublish:
@@ -37,5 +38,4 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ github.ref }}
         file: nupkgs
-        file_glob: true
     # - name: Publish nupkg
