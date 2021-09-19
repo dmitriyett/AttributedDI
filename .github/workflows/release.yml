@@ -1,4 +1,4 @@
-name: Build and publish to nuget
+name: Publish to nuget
 
 on:
   release:
