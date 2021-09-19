@@ -38,6 +38,6 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ github.ref }}
         file: nupkgs/*.nupkg
-        flie_glob: true
+        file_glob: true
         overwrite: true
     # - name: Publish nupkg
